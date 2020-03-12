@@ -1,18 +1,22 @@
 package biz.aliustaoglu.heremaps;
 
-import android.view.View;
+import androidx.annotation.Nullable;
 
-// AppCompatCheckBox import for React Native pre-0.60:
-import android.support.v7.widget.AppCompatCheckBox;
-// AppCompatCheckBox import for React Native 0.60(+):
-// import androidx.appcompat.widget.AppCompatCheckBox;
-
+import com.facebook.react.bridge.ReadableArray;
+import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
+import com.facebook.react.uimanager.annotations.ReactProp;
 
-public class RNHMReactNativeHereMapsManager extends SimpleViewManager<View> {
+import biz.aliustaoglu.heremaps.props.RNHMCamera;
+import biz.aliustaoglu.heremaps.props.RNHMMarkers;
+import biz.aliustaoglu.heremaps.views.RNHMHereMapLayout;
+
+public class RNHMReactNativeHereMapsManager extends SimpleViewManager<RNHMHereMapLayout> {
 
     public static final String REACT_CLASS = "RNHMReactNativeHereMaps";
+    RNHMHereMapLayout rnhmHereMapLayout;
+
 
     @Override
     public String getName() {
@@ -20,10 +24,22 @@ public class RNHMReactNativeHereMapsManager extends SimpleViewManager<View> {
     }
 
     @Override
-    public View createViewInstance(ThemedReactContext c) {
-        // TODO: Implement some actually useful functionality
-        AppCompatCheckBox cb = new AppCompatCheckBox(c);
-        cb.setChecked(true);
-        return cb;
+    public RNHMHereMapLayout createViewInstance(ThemedReactContext context) {
+        rnhmHereMapLayout = new RNHMHereMapLayout(context);
+
+        rnhmHereMapLayout.rnhmCamera = new RNHMCamera();
+        rnhmHereMapLayout.rnhmMarkers = new RNHMMarkers();
+
+        return rnhmHereMapLayout;
+    }
+
+    @ReactProp(name = "camera")
+    public void setCamera(RNHMHereMapLayout mapLayout, ReadableMap camera) {
+        rnhmHereMapLayout.rnhmCamera.update(mapLayout, camera);
+    }
+
+    @ReactProp(name = "markers")
+    public void setMarkers(RNHMHereMapLayout mapLayout, ReadableArray markers) {
+        rnhmHereMapLayout.rnhmMarkers.update(mapLayout, markers);
     }
 }

@@ -1,4 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="biz.aliustaoglu.heremaps">
-
+<application>
+    <service
+        android:name="com.here.android.mpa.service.MapService"
+        android:exported="false"
+        android:label="RNHMService">
+        <intent-filter>
+            <action android:name="RNHMServiceIntent"></action>
+        </intent-filter>
+    </service>
+</application>
 </manifest>
