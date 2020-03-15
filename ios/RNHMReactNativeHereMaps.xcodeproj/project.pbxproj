@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		B3E7B58A1CC2AC0600A0062D /* RNHMReactNativeHereMaps.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNHMReactNativeHereMaps.m */; };
+		D38B8E46241DF6C000BF2E68 /* RNHMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38B8E45241DF6C000BF2E68 /* RNHMViewController.swift */; };
+		D38B8E49241DF6EE00BF2E68 /* RNHMCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38B8E48241DF6EE00BF2E68 /* RNHMCamera.swift */; };
+		D38B8E4B241DF6FE00BF2E68 /* RNHMMarkers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38B8E4A241DF6FE00BF2E68 /* RNHMMarkers.swift */; };
+		D38B8E4D241DF72700BF2E68 /* Props.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38B8E4C241DF72700BF2E68 /* Props.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,8 +28,12 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNHMReactNativeHereMaps.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNHMReactNativeHereMaps.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3E7B5881CC2AC0600A0062D /* RNHMReactNativeHereMaps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNHMReactNativeHereMaps.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* RNHMReactNativeHereMaps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNHMReactNativeHereMaps.m; sourceTree = "<group>"; };
+		D38B8E44241DF6C000BF2E68 /* RNHMReactNativeHereMaps-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RNHMReactNativeHereMaps-Bridging-Header.h"; sourceTree = "<group>"; };
+		D38B8E45241DF6C000BF2E68 /* RNHMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNHMViewController.swift; sourceTree = "<group>"; };
+		D38B8E48241DF6EE00BF2E68 /* RNHMCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNHMCamera.swift; sourceTree = "<group>"; };
+		D38B8E4A241DF6FE00BF2E68 /* RNHMMarkers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNHMMarkers.swift; sourceTree = "<group>"; };
+		D38B8E4C241DF72700BF2E68 /* Props.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Props.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,10 +58,22 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				B3E7B5881CC2AC0600A0062D /* RNHMReactNativeHereMaps.h */,
+				D38B8E47241DF6D400BF2E68 /* Props */,
+				D38B8E45241DF6C000BF2E68 /* RNHMViewController.swift */,
 				B3E7B5891CC2AC0600A0062D /* RNHMReactNativeHereMaps.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
+				D38B8E44241DF6C000BF2E68 /* RNHMReactNativeHereMaps-Bridging-Header.h */,
 			);
+			sourceTree = "<group>";
+		};
+		D38B8E47241DF6D400BF2E68 /* Props */ = {
+			isa = PBXGroup;
+			children = (
+				D38B8E48241DF6EE00BF2E68 /* RNHMCamera.swift */,
+				D38B8E4A241DF6FE00BF2E68 /* RNHMMarkers.swift */,
+				D38B8E4C241DF72700BF2E68 /* Props.swift */,
+			);
+			path = Props;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -87,6 +107,7 @@
 				TargetAttributes = {
 					58B511DA1A9E6C8500147676 = {
 						CreatedOnToolsVersion = 6.1.1;
+						LastSwiftMigration = 1130;
 					};
 				};
 			};
@@ -95,6 +116,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 58B511D21A9E6C8500147676;
@@ -112,7 +134,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D38B8E49241DF6EE00BF2E68 /* RNHMCamera.swift in Sources */,
 				B3E7B58A1CC2AC0600A0062D /* RNHMReactNativeHereMaps.m in Sources */,
+				D38B8E4B241DF6FE00BF2E68 /* RNHMMarkers.swift in Sources */,
+				D38B8E46241DF6C000BF2E68 /* RNHMViewController.swift in Sources */,
+				D38B8E4D241DF72700BF2E68 /* Props.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,32 +241,41 @@
 		58B511F01A9E6C8500147676 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				HEADER_SEARCH_PATHS = (
-				"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(SRCROOT)/../../../React/**",
-					"$(SRCROOT)/../../react-native/React/**",
-				);
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = RNHMReactNativeHereMaps;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		58B511F11A9E6C8500147676 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
 				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = RNHMReactNativeHereMaps;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "RNHMReactNativeHereMaps-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		58B511F11A9E6C8500147676 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../../../React/**",
+					"$(SRCROOT)/../../react-native/React/**",
+				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = RNHMReactNativeHereMaps;
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "RNHMReactNativeHereMaps-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

@@ -1,19 +1,8 @@
-#import "RNHMReactNativeHereMaps.h"
+#import <Foundation/Foundation.h>
+#import "React/RCTBridgeModule.h"
+#import "React/RCTViewManager.h"
+#import "React/RCTEventEmitter.h"
 
-@implementation RNHMReactNativeHereMaps
-
-RCT_EXPORT_MODULE()
-
-- (UIView *)view
-{
-    // TODO: Implement some actually useful functionality
-    UILabel * label = [[UILabel alloc] init];
-    [label setTextColor:[UIColor redColor]];
-    [label setText: @"*****"];
-    [label sizeToFit];
-    UIView * wrapper = [[UIView alloc] init];
-    [wrapper addSubview:label];
-    return wrapper;
-}
+@interface RCT_EXTERN_MODULE(RNHMReactNativeHereMaps, RCTViewManager)
 
 @end
