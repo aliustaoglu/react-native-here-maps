@@ -55,7 +55,10 @@ public class RNHMHereMapLayout extends LinearLayout implements OnEngineInitListe
         mapView.setMap(this.hereMap);
         this.hereMap.setMapScheme(Map.Scheme.TRUCK_DAY);
 
+        hereMap.setProjectionMode(Map.Projection.MERCATOR);
+
 
         rnhmCamera.refresh();
+        rnhmMarkers.refresh();
     }
 }

@@ -19,7 +19,7 @@ public class RNHMCamera {
         this.mapLayout = mapLayout;
         this.camera = camera;
 
-        if (mapLayout.hereMap == null) return;
+        if (mapLayout == null || mapLayout.hereMap == null) return;
 
         ReadableMap target = camera.getMap("target");
         Double lat = target.getDouble("lat");
