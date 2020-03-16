@@ -10,6 +10,7 @@
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
+#import <NMAKit/NMAKit.h>
 
 @implementation AppDelegate
 
@@ -27,6 +28,9 @@
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+  
+  [NMAApplicationContext setAppId:@"APPID" appCode:@"APPTOKEN" licenseKey:@"LICENCE_KEY"];
+  
   return YES;
 }
 
