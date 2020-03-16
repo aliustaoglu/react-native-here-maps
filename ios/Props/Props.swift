@@ -7,3 +7,14 @@
 //
 
 import Foundation
+import NMAKit
+
+struct Props {
+    var camera: RNHMCamera?
+    var markers: RNHMMarkers?
+    
+
+    func refresh(_ hereMapView: NMAMapView){
+        self.camera?.update(hereMapView)
+    }
+}

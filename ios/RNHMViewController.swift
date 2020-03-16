@@ -14,9 +14,8 @@ class RNHMReactNativeHereMaps: RCTViewManager {
     
     
     override func view() -> UIView? {
-        let view = UITextView()
-        view.text = "DENEME"
-        return view
+        let nma = RNHMHereMapView()
+        return nma
     }
     
 }
