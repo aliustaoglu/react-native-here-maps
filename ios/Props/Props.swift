@@ -17,9 +17,9 @@ struct Props {
     var locationPicker: RNHMLocationPicker?
     var polylines: RNHMPolylines?
 
-    func refresh(_ mapView: NMAMapView){
+    func refresh(_ mapView: NMAMapView, _ propsState: inout PropsStateType){
         self.camera?.update(mapView)
-        self.markers?.update(mapView)
+        self.markers?.update(mapView, &propsState)
         self.options?.update(mapView)
         self.mapStyle?.update(mapView)
         self.locationPicker?.update(mapView)

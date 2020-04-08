@@ -9,12 +9,16 @@
 import Foundation
 import NMAKit
 
+typealias PropsStateType = Dictionary<String, Dictionary<String, Any>>
+
 class RNHMHereMapView : UIView, NMAMapViewDelegate{
+    // Here Maps do not keep track of its Objects (Markers, Polylines etc)
+    // Therefore we need to keep such things in an instance state
+    public var propsState : PropsStateType = [:]
     
     private var mapView : NMAMapView!
     private var isMapReady = false
     private var props = Props()
-    
     
     // =========================================
     // PROPS start
@@ -62,7 +66,7 @@ class RNHMHereMapView : UIView, NMAMapViewDelegate{
         didSet{
             props.markers = RNHMMarkers(markers, oldValue)
             if (self.isMapReady){
-                props.markers?.update(self.mapView)
+                props.markers?.update(self.mapView, &propsState)
             }
         }
     }
@@ -89,6 +93,10 @@ class RNHMHereMapView : UIView, NMAMapViewDelegate{
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        // Add here if you need more state in props
+        self.propsState["markers"] = [:]
+        self.propsState["polylines"] = [:]
     }
     
     override func didMoveToWindow() {
@@ -105,7 +113,7 @@ class RNHMHereMapView : UIView, NMAMapViewDelegate{
         self.addSubview(mapView)
         self.isMapReady = true
         
-        self.props.refresh(mapView)
+        self.props.refresh(mapView, &propsState)
                 
         if self.onMapReady != nil {
             self.onMapReady!([:])

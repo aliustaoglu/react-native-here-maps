@@ -14,21 +14,68 @@ import NMAKit
 class RNHMMarkers{
     var markers: NSArray = []
     var oldMarkers: NSArray = []
+    var removedIDs: [String] = []
+    
+    var markerObjects: [String: NMAMapObject] = [:]
     
     init(_ markers: NSArray, _ oldValue: NSArray) {
         self.markers = markers
         self.oldMarkers = oldValue
         
         
-        
+        self.oldMarkers.forEach{ oldMarker in
+            let oldDic = oldMarker as! NSDictionary
+            let id = oldDic.object(forKey: "id") as! String
+            let containsId = markers.contains { m in
+                let marker = m as! NSDictionary
+                let containsId = id == (marker.object(forKey: "id") as! String)
+                return containsId
+            }
+            if !containsId {
+                self.removedIDs.append(id)
+            }
+        }
     }
     
-    public func update(_ mapView: NMAMapView){
+    public func update(_ mapView: NMAMapView, _ propsState: inout PropsStateType){
+        for m in self.markers {
+            let mDict = m as! NSDictionary
+            let id = mDict.object(forKey: "id") as! String
+            let lat = mDict.object(forKey: "lat") as! Double
+            let lng = mDict.object(forKey: "lng") as! Double
+            
+            let coords = NMAGeoCoordinates(latitude: lat, longitude: lng)
+            
+            if let ico = mDict.object(forKey: "icon") {
+                let icon = ico as? NSDictionary
+                
+                let uri = icon?.object(forKey: "uri") as! String
+                let scale = icon?.value(forKey: "scale") as! CGFloat
+                
+                let url = URL(string: uri)
+                let data = try? Data(contentsOf: url!)
+                let img = UIImage(data: data!, scale: scale)!
+                
+                let marker = NMAMapMarker(geoCoordinates: coords, image: img)
+                mapView.add(mapObject: marker)
+                propsState["markers"]![id] = marker
+            } else {
+                let defaultMarker = NMAMapMarker(geoCoordinates: coords)
+                mapView.add(mapObject: defaultMarker)
+                propsState["markers"]![id] = defaultMarker
+            }
+        }
         
+        removeMarkers(mapView, &propsState)
     }
     
-    private func removeMarkers(_ mapView: NMAMapView){
-
+    private func removeMarkers(_ mapView: NMAMapView, _ propsState: inout PropsStateType){
+        self.removedIDs.forEach{ removedID in
+            print(propsState)
+            let mapObject = propsState["markers"]![removedID] as! NMAMapObject
+            mapView.remove(mapObject: mapObject)
+        }
+        self.removedIDs = []
     }
 }
 
